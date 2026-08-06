@@ -978,3 +978,33 @@ opacity:1;
 transform:translateY(0);
 
 }
+.gradient-text{
+
+background:linear-gradient(
+90deg,
+#00F5FF,
+#8B5CF6,
+#00F5FF
+);
+
+background-size:300%;
+
+-webkit-background-clip:text;
+
+color:transparent;
+
+animation:gradientMove 6s linear infinite;
+
+}
+
+@keyframes gradientMove{
+
+0%{
+background-position:0%;
+}
+
+100%{
+background-position:300%;
+}
+
+}
