@@ -795,3 +795,4 @@ window.addEventListener("load", () => {
     counters.forEach(counter => counterObserver.observe(counter));
 
 });
+document.documentElement.style.scrollBehavior = "smooth";
