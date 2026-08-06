@@ -671,7 +671,127 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     });
+/* ==========================================
+   PARALLAX EFFECT
+========================================== */
 
+window.addEventListener("mousemove", (e) => {
+  const x = (window.innerWidth / 2 - e.pageX) / 40;
+  const y = (window.innerHeight / 2 - e.pageY) / 40;
+
+  document.querySelectorAll(".floating-logo").forEach((logo) => {
+    logo.style.transform =
+      `translate(${x}px, ${y}px) rotate(${Date.now() / 40}deg)`;
+  });
+});
+
+/* ==========================================
+   RANDOM GLOW PULSE
+========================================== */
+
+setInterval(() => {
+  document.querySelectorAll(".glass").forEach(card => {
+    card.style.boxShadow =
+      `0 0 ${20 + Math.random() * 40}px rgba(0,255,170,.18)`;
+  });
+}, 1500);
+
+/* ==========================================
+   COPY CONTRACT BUTTON
+========================================== */
+
+const copyBtn = document.querySelector(".copy-btn");
+
+if (copyBtn) {
+
+    copyBtn.addEventListener("click", () => {
+
+        const address =
+            copyBtn.dataset.address;
+
+        navigator.clipboard.writeText(address);
+
+        const original = copyBtn.innerHTML;
+
+        copyBtn.innerHTML =
+            '<i class="fa-solid fa-check"></i> Copied!';
+
+        setTimeout(() => {
+
+            copyBtn.innerHTML = original;
+
+        },2000);
+
+    });
+
+}
+
+/* ==========================================
+   LIVE YEAR
+========================================== */
+
+const year = document.querySelector("#year");
+
+if(year){
+
+    year.textContent =
+        new Date().getFullYear();
+
+}
+
+/* ==========================================
+   HERO BUTTON RIPPLE
+========================================== */
+
+document.querySelectorAll(".btn").forEach(button => {
+
+    button.addEventListener("click", function(e){
+
+        const circle =
+            document.createElement("span");
+
+        const diameter =
+            Math.max(this.clientWidth,this.clientHeight);
+
+        const radius =
+            diameter / 2;
+
+        circle.style.width =
+            circle.style.height =
+            `${diameter}px`;
+
+        circle.style.left =
+            `${e.clientX - this.offsetLeft - radius}px`;
+
+        circle.style.top =
+            `${e.clientY - this.offsetTop - radius}px`;
+
+        circle.classList.add("ripple");
+
+        const ripple =
+            this.getElementsByClassName("ripple")[0];
+
+        if(ripple){
+
+            ripple.remove();
+
+        }
+
+        this.appendChild(circle);
+
+    });
+
+});
+
+/* ==========================================
+   PAGE LOADED
+========================================== */
+
+window.addEventListener("load", () => {
+
+    document.body.classList.add("loaded");
+
+});
     counters.forEach(counter => counterObserver.observe(counter));
 
 });
