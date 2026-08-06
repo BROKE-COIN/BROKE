@@ -319,3 +319,217 @@ window.addEventListener("scroll", () => {
     progressBar.style.width = progress + "%";
 
 });
+/* ==========================================
+   BUTTON RIPPLE EFFECT
+========================================== */
+
+document.querySelectorAll(".btn").forEach(button => {
+
+    button.addEventListener("click", function(e){
+
+        const ripple = document.createElement("span");
+
+        ripple.className = "ripple";
+
+        const rect = this.getBoundingClientRect();
+
+        ripple.style.left = `${e.clientX - rect.left}px`;
+        ripple.style.top = `${e.clientY - rect.top}px`;
+
+        this.appendChild(ripple);
+
+        setTimeout(() => {
+
+            ripple.remove();
+
+        }, 600);
+
+    });
+
+});
+
+/* ==========================================
+   COPY CONTRACT ADDRESS
+========================================== */
+
+const copyButton = document.querySelector(".copy-address");
+const contractAddress = document.querySelector(".contract-address");
+
+if (copyButton && contractAddress) {
+
+    copyButton.addEventListener("click", async () => {
+
+        try {
+
+            await navigator.clipboard.writeText(
+                contractAddress.textContent.trim()
+            );
+
+            const original = copyButton.innerHTML;
+
+            copyButton.innerHTML =
+                '<i class="fa-solid fa-check"></i> Copied';
+
+            copyButton.classList.add("success");
+
+            setTimeout(() => {
+
+                copyButton.innerHTML = original;
+                copyButton.classList.remove("success");
+
+            }, 2000);
+
+        } catch {
+
+            alert("Unable to copy address.");
+
+        }
+
+    });
+
+}
+
+/* ==========================================
+   LAZY IMAGE FADE-IN
+========================================== */
+
+const lazyImages = document.querySelectorAll("img[data-src]");
+
+if (lazyImages.length) {
+
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+
+        entries.forEach(entry => {
+
+            if (!entry.isIntersecting) return;
+
+            const img = entry.target;
+
+            img.src = img.dataset.src;
+
+            img.onload = () => {
+
+                img.classList.add("loaded");
+
+            };
+
+            observer.unobserve(img);
+
+        });
+
+    });
+
+    lazyImages.forEach(img => imageObserver.observe(img));
+
+}
+
+/* ==========================================
+   SMALL PARALLAX ON HERO
+========================================== */
+
+const hero = document.querySelector(".hero");
+
+window.addEventListener("scroll", () => {
+
+    if (!hero) return;
+
+    hero.style.backgroundPositionY =
+        `${window.scrollY * 0.3}px`;
+
+});
+
+/* ==========================================
+   FPS-OPTIMISED SCROLL
+========================================== */
+
+let ticking = false;
+
+function updateOnScroll() {
+
+    ticking = false;
+
+}
+
+window.addEventListener("scroll", () => {
+
+    if (!ticking) {
+
+        requestAnimationFrame(updateOnScroll);
+
+        ticking = true;
+
+    }
+
+});
+
+/* ==========================================
+   PRELOADER
+========================================== */
+
+window.addEventListener("load", () => {
+
+    const loader = document.querySelector(".preloader");
+
+    if (!loader) return;
+
+    loader.classList.add("hide");
+
+    setTimeout(() => {
+
+        loader.remove();
+
+    }, 800);
+
+});
+
+/* ==========================================
+   RANDOM ROADMAP GLOW
+========================================== */
+
+setInterval(() => {
+
+    if (!roadmapCards.length) return;
+
+    roadmapCards.forEach(card => {
+
+        card.classList.remove("pulse");
+
+    });
+
+    const random =
+        roadmapCards[Math.floor(Math.random() * roadmapCards.length)];
+
+    random.classList.add("pulse");
+
+}, 3500);
+
+/* ==========================================
+   CONSOLE EASTER EGG
+========================================== */
+
+console.log(
+`%c
+██████╗ ██████╗  ██████╗ ██╗  ██╗███████╗
+██╔══██╗██╔══██╗██╔═══██╗██║ ██╔╝██╔════╝
+██████╔╝██████╔╝██║   ██║█████╔╝ █████╗
+██╔══██╗██╔══██╗██║   ██║██╔═██╗ ██╔══╝
+██████╔╝██║  ██║╚██████╔╝██║  ██╗███████╗
+╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+
+WELCOME TO $BROKE INCORPORATED
+
+You inspected the console...
+Now you're officially overqualified.
+
+CA: COMING SOON
+`,
+"color:#00F5FF;font-weight:bold;font-size:12px;"
+);
+
+/* ==========================================
+   INITIALISE
+========================================== */
+
+document.documentElement.classList.add("js-ready");
+
+console.log("✅ $BROKE website loaded successfully.");
