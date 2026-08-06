@@ -796,3 +796,27 @@ window.addEventListener("load", () => {
 
 });
 document.documentElement.style.scrollBehavior = "smooth";
+const revealElements = document.querySelectorAll(
+".hero-content,.about,.tokenomics,.roadmap,.community,.faq,.footer,.glass-card,.phase-card,.token-card"
+);
+
+const revealObserver = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},{
+threshold:.15
+});
+
+revealElements.forEach(el=>{
+el.classList.add("hidden");
+revealObserver.observe(el);
+});
