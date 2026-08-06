@@ -533,3 +533,145 @@ CA: COMING SOON
 document.documentElement.classList.add("js-ready");
 
 console.log("✅ $BROKE website loaded successfully.");
+/* ==========================================
+   $BROKE WEBSITE
+   Production JavaScript
+   Part 1
+========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* ==========================
+       Navigation
+    ========================== */
+
+    const header = document.querySelector("header");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 40) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+    });
+
+    /* ==========================
+       Mobile Menu
+    ========================== */
+
+    const menuBtn = document.querySelector(".menu-toggle");
+    const nav = document.querySelector(".nav-links");
+
+    if (menuBtn) {
+        menuBtn.addEventListener("click", () => {
+            menuBtn.classList.toggle("active");
+            nav.classList.toggle("active");
+        });
+    }
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+            nav.classList.remove("active");
+
+            if (menuBtn) {
+                menuBtn.classList.remove("active");
+            }
+        });
+    });
+
+    /* ==========================
+       Smooth Scroll
+    ========================== */
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+        anchor.addEventListener("click", function (e) {
+
+            const target = document.querySelector(this.getAttribute("href"));
+
+            if (!target) return;
+
+            e.preventDefault();
+
+            window.scrollTo({
+                top: target.offsetTop - 70,
+                behavior: "smooth"
+            });
+
+        });
+
+    });
+
+    /* ==========================
+       Reveal Animations
+    ========================== */
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(entries => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("active");
+
+            }
+
+        });
+
+    }, {
+        threshold: 0.15
+    });
+
+    reveals.forEach(section => observer.observe(section));
+
+    /* ==========================
+       Counter Animation
+    ========================== */
+
+    const counters = document.querySelectorAll(".counter");
+
+    const counterObserver = new IntersectionObserver(entries => {
+
+        entries.forEach(entry => {
+
+            if (!entry.isIntersecting) return;
+
+            const counter = entry.target;
+
+            const target = Number(counter.dataset.target);
+
+            let current = 0;
+
+            const increment = target / 80;
+
+            const update = () => {
+
+                current += increment;
+
+                if (current < target) {
+
+                    counter.innerText = Math.floor(current);
+
+                    requestAnimationFrame(update);
+
+                } else {
+
+                    counter.innerText = target.toLocaleString();
+
+                }
+
+            };
+
+            update();
+
+            counterObserver.unobserve(counter);
+
+        });
+
+    });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+
+});
