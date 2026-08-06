@@ -926,3 +926,38 @@ padding:24px;
 /* ==========================================
    END OF FILE
 ========================================== */
+/* Ripple */
+
+.btn{
+position:relative;
+overflow:hidden;
+}
+
+.ripple{
+position:absolute;
+border-radius:50%;
+transform:scale(0);
+animation:ripple .6s linear;
+background:rgba(255,255,255,.45);
+pointer-events:none;
+}
+
+@keyframes ripple{
+
+to{
+transform:scale(4);
+opacity:0;
+}
+
+}
+
+/* Page Loaded */
+
+body{
+opacity:0;
+transition:.6s;
+}
+
+body.loaded{
+opacity:1;
+}
