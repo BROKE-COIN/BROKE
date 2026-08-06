@@ -1,138 +1,45 @@
+/* Variables */
 
-/* ===========================
-   Variables
-   Design tokens
-=========================== */
-:root {
-  --bg: #050505;
-  --surface: rgba(255,255,255,.05);
-  --primary: #ffd54a;
-  --secondary: #ff9900;
-  --text: #ffffff;
-  --muted: #9ca3af;
-  --border: rgba(255,255,255,.08);
+/* Reset */
 
-  --radius: 18px;
-  --shadow: 0 20px 60px rgba(0,0,0,.45);
+/* Body */
 
-  --transition: .35s ease;
-  --max-width: 1280px;
-}
+/* Typography */
 
-/* ===========================
-   Reset
-=========================== */
+/* Navigation */
 
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Hero */
 
-/* ===========================
-   Body
-=========================== */
+/* Buttons */
 
-/* Main page background
-   Base layout
-   Scroll behaviour
-   Custom scrollbar */
+/* Floating logo */
 
-/* ===========================
-   Typography
-=========================== */
+/* Background */
 
-/* Headings
-   Paragraphs
-   Links
-   Selection colour */
+/* Particles */
 
-/* ===========================
-   Navigation
-=========================== */
+/* Utility classes */
 
-/* Navbar
-   Logo
-   Desktop menu
-   Mobile menu
-   Sticky behaviour */
+/* ---------- PART 2A ---------- */
+/* /* Part 2A */
+/* Variables */
+/* Reset */
+/* Body */
+/* Typography */
 
-/* ===========================
-   Hero
-=========================== */
+/* Part 2B */
+/* Navigation */
 
-/* Hero section
-   Hero content
-   Animated title
-   Subtitle
-   CTA layout */
+/* Part 2C */
+/* Hero */
 
-/* ===========================
-   Buttons
-=========================== */
+/* Part 2D */
+/* Buttons */
+/* Floating Logo */
+/* Background */
+/* Particles */
+/* Utility Classes */
+/* Responsive */ */
 
-/* Primary button
-   Secondary button
-   Hover animations
-   Active state */
-
-/* ===========================
-   Floating Logo
-=========================== */
-
-/* 3D coin
-   Glow
-   Rotation
-   Floating animation */
-
-/* ===========================
-   Background
-=========================== */
-
-/* Animated gradient
-   Blurred blobs
-   Grid overlay
-   Noise texture */
-
-/* ===========================
-   Particles
-=========================== */
-
-/* Canvas positioning
-   Blend mode
-   Pointer events */
-
-/* ===========================
-   Utility Classes
-=========================== */
-
-/* Container
-   Grid
-   Flex helpers
-   Glass card
-   Hidden
-   Fade animations */
-
-/* ===========================
-   Responsive
-=========================== */
-
-/* Tablet */
-
-@media (max-width: 992px) {
-
-}
-
-/* Mobile */
-
-@media (max-width: 768px) {
-
-}
-
-/* Small Mobile */
-
-@media (max-width: 480px) {
-
-}
+/* ---------- PART 2B ---------- */
+/* (Paste all of Part 2B directly below Part 2A) */
